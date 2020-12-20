@@ -52,9 +52,10 @@ api_key | string | DEMO_KEY | api.nasa.gov key for expanded usage |
 3. Service doesn't apply trim of extra spaces at the beginning and at the end of value.
 4. Service doesn't ignore unexpected quesry params.
 5. Error for unexpected quesry params contains undocumented params and doesn't contains some documented params.
-6. Two different types of *400 Bad Request* error responses: GET with *date* in future -> type 1 | GET with HTTP scheme -> type 2.
+6. Two different types of *400 Bad Request* error responses: GET with unexpected query param -> type 1 | GET with HTTP scheme -> type 2.
 7. *405 Method Not Allowed* error response is in HTML format for unexpected request types (POST, DELETE and etc).
 8. Service can returns video instead of image (*date=2020-12-16*). In this case response body doesn't contains *hdurl* that appears by default for image (see known issue #2).
+9. Different error type for *date=tomorrow* and *date=date after tomorrow*. That is not described in the requirements.
 
 # NASA APOD API Test Framework
 
@@ -69,6 +70,7 @@ api_key | string | DEMO_KEY | api.nasa.gov key for expanded usage |
 1. Not null check only for response body fields which values we don't know in advance -> Backend access required to get or create test data to improve validation.
 2. Avoiding *hdurl* response field validation just to make demo project stable, because this field is affected by known issues #2 & #8.
 3. Avoiding *copyright* field validation because it appearens unpredictable when no read/write access to backend data. See requirement #3.
+4. Different models for Forbiddern & Bad Request error responses. See known issue #6.
 
 **How To Run**
 1. Import to IDE & execute `regression_testng.xml`.
