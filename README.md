@@ -22,19 +22,20 @@ api_key | string | DEMO_KEY | api.nasa.gov key for expanded usage |
 
 # NASA APOD API Test Cases
 **Positive**
-1. GET with all parameters: *api_key=generated*  | *hd=false* | *date=yesterday*
+1. GET with all parameters: *api_key=generated*  | *hd=true* | *date=yesterday*
 2. GET without parameters to verify how parameters default values applies.
-3. GET with single parameter: *api_key=generated* OR *demo* | *hd=false* | *date=days ago* OR *month ago* OR *year ago* OR *boundary value for date in the past*
+3. GET with single parameter: *api_key=generated* OR *demo* | *hd=false OR true* | *date=days ago* OR *month ago* OR *year ago* OR *boundary value for date in the past*
 4. GET to check requirements for *copyright* field appearing.
-5. GET with *Concept_tags* parameter to verify how it disabled.
+5. GET with *Concept_tags* parameter to verify how it disabled (is not clear in documentation)
 6. GET with extra spaces at the begining of param and at the end to verify how trim() value works on service side.
 
 **Negative**
 1. GET with wrong *api_key*
-2. GET with single parameter of unexpected format: *date* | *hd*
+2. GET with single parameter of unexpected value format: *date* | *hd*
 3. GET with future *date* in expected format.
 4. Unexpected request type with query parameters.
 5. HTTP request instead of HTTPS.
+6. GET with unexpected request format (x-form-urlencoded)
 
 **API_KEY specific tests**
 1. GET with *DEMO_KEY* and check that *X-RateLimit-Limit* and *X-RateLimit-Remaining HTTP* headers values changed.
