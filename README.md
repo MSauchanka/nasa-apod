@@ -54,15 +54,23 @@ api_key | string | DEMO_KEY | api.nasa.gov key for expanded usage |
 5. Error for unexpected quesry params contains undocumented params and doesn't contains some documented params
 6. Two different types of *400 Bad Request* error responses: GET with *date* in future -> type 1 | GET with HTTP scheme -> type 2
 7. *405 Method Not Allowed* error response is in HTML format for unexpected request types (POST, DELETE and etc)
+8. Service can returns video instead of image (*date=2020-12-16*). In this case response body doesn't contains *hdurl* that appears by default for image (see known issue #2)
 
 # NASA APOD API Test Framework
 
-*Implementation*
+**Implementation**
 1. Maven Java 8 project
 2. Spring Boot 2.3.6.RELEASE as parent dependency
 3. TestNg 7.3.0 as xUnit framework
 4. Rest-Assured for HTTP requests
 5. Maven surfire plugin to simplify execution from command line
 
+**Nuances of tests implementations**
+1. Not null check only for response body fields which values we don't know in advance -> Backend access required to get or create test data to improve validation.
+2. Avoiding to check *hdurl* just to make demo project stable, because this field is affected by known issues #2 & #8
+
+**Hot To Execute**
+1. Import to IDE & execute `regression_testng.xml`
+2. Navigate to project root directory & execute `mvn clean test` command
 
 
