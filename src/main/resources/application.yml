@@ -1,0 +1,8 @@
+nasa:
+  scheme: https
+  host: api.nasa.gov
+  apiKey: mxYj3ztw1r5951jxyYofvgQcum7l4fzuyr6H3abM
+  apod:
+    uri: /planetary/apod
+    dateFormat: yyyy-MM-dd
+
