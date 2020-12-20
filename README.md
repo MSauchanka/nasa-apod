@@ -74,6 +74,6 @@ api_key | string | DEMO_KEY | api.nasa.gov key for expanded usage |
 
 **How To Run**
 1. Import to IDE & execute `regression_testng.xml`.
-2. Navigate to project root directory & execute `mvn clean test` command.
+2. Command line execution: navigate to project root directory & execute `mvn clean test`.
 
 
